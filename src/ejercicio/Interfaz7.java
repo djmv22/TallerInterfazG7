@@ -5,6 +5,8 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DanielDeJesus
@@ -27,21 +29,129 @@ public class Interfaz7 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNAE = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtBonoPagar = new javax.swing.JTextField();
+        cmdCalcular = new javax.swing.JButton();
+        cmdBorrar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jLabel1.setText("Ejercicio Número 7: Calcular bono por antiguedad ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jLabel2.setText("Nº de años en la empresa:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+
+        txtNAE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNAEActionPerformed(evt);
+            }
+        });
+        txtNAE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNAEKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtNAE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 60, -1));
+
+        jLabel3.setText("Bono a pagar:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+
+        txtBonoPagar.setEditable(false);
+        txtBonoPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBonoPagarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtBonoPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 70, -1));
+
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+
+        cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtBonoPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBonoPagarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBonoPagarActionPerformed
+
+    private void txtNAEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNAEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNAEActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        txtNAE.setText("");
+        txtBonoPagar.setText("");
+        
+        txtNAE.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtNAEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNAEKeyTyped
+        char c=evt.getKeyChar();
+        
+        if (!Character.isDigit(c)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNAEKeyTyped
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String res;
+        double nA, op;
+        
+        if(txtNAE.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Digite el Nº de años","Error",JOptionPane.ERROR_MESSAGE);
+            txtNAE.requestFocusInWindow();
+        }
+        else{
+            nA = Double.parseDouble(txtNAE.getText());
+            
+            if(nA == 1){
+                op = 100000;
+            }
+            else{
+                op = (nA * 120000) - 20000;
+            }
+            
+            res = String.valueOf(op);
+            txtBonoPagar.setText(res);
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_cmdCalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +189,13 @@ public class Interfaz7 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdCalcular;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtBonoPagar;
+    private javax.swing.JTextField txtNAE;
     // End of variables declaration//GEN-END:variables
 }
